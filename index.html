@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-os="windows">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yassa Ali | Cybersecurity Intern &amp; IT Support</title>
+<meta name="description" content="Portfolio of Yassa Ali, Cybersecurity Engineer Intern and aspiring IT Support Specialist.">
+<meta name="theme-color" content="#0a1226">
+<meta name="color-scheme" content="dark light">
+<style>
+/* ========== 1. TOKENS: deep navy base, light variant follows the device ========== */
+:root{
+  --bg:#0a1226; --bg2:#0f1b3a; --text:#e8eefc; --muted:#94a3b8;
+  --accent:#38bdf8; --on-accent:#04101f; --accent-soft:rgba(56,189,248,.15); --warn:#fbbf24;
+  --card:rgba(20,32,64,.6); --line:rgba(148,163,184,.2);
+  /* skin tokens, overridden per OS below */
+  --r:12px; --blur:0px; --fw:600; --track:-.01em;
+  --shadow:0 1px 3px rgba(0,0,0,.3); --font:system-ui,sans-serif;
+}
+@media (prefers-color-scheme:light){
+  :root{--bg:#f4f7fc; --bg2:#e3ebfa; --text:#0b1530; --muted:#51607a; --accent:#0369a1; --on-accent:#fff;
+    --accent-soft:rgba(3,105,161,.1); --warn:#b45309; --card:rgba(255,255,255,.72); --line:rgba(15,23,42,.14)}
+}
+
+/* ========== 2. OS SKINS (data-os is set by the script at the bottom) ========== */
+[data-os=windows]{--r:8px; --blur:30px; --fw:600; --track:-.01em;
+  --font:"Segoe UI Variable Display","Segoe UI",system-ui,sans-serif; --shadow:0 2px 8px rgba(0,0,0,.25)}
+[data-os=apple]{--r:22px; --blur:26px; --fw:700; --track:-.03em;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",sans-serif;
+  --shadow:0 22px 48px -14px rgba(0,0,0,.5)}
+[data-os=material]{--r:16px; --blur:0px; --fw:500; --track:0; --card:var(--bg2);
+  --font:Roboto,"Google Sans",system-ui,sans-serif; --shadow:0 2px 6px rgba(0,0,0,.3),0 8px 16px rgba(0,0,0,.14)}
+
+/* ========== 3. BASE ========== */
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--font);color:var(--text);line-height:1.6;min-height:100vh;
+  background:radial-gradient(900px 520px at 88% -6%,rgba(56,189,248,.17),transparent),
+             radial-gradient(700px 520px at -5% 35%,rgba(99,102,241,.13),transparent),var(--bg);
+  background-attachment:fixed}
+main{max-width:1000px;margin:0 auto;padding:0 20px 56px}
+section{padding-top:56px}
+h1,h2,h3{font-weight:var(--fw);letter-spacing:var(--track);line-height:1.2}
+h2{font-size:1.55rem;margin-bottom:20px}
+h3{font-size:1.08rem}
+p,li{color:var(--muted)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ic{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ========== 4. SHARED COMPONENTS ========== */
+.card{position:relative;padding:20px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);
+  box-shadow:var(--shadow);-webkit-backdrop-filter:blur(var(--blur)) saturate(160%);backdrop-filter:blur(var(--blur)) saturate(160%);
+  transition:transform .2s,border-color .2s}
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.78rem;color:var(--accent);
+  background:var(--accent-soft);border:1px solid var(--line)}
+.tag.wip{color:var(--warn)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:calc(var(--r)*.7);
+  font:inherit;font-weight:600;text-decoration:none;color:var(--text);border:1px solid var(--line);background:var(--card)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn:hover{filter:brightness(1.12)}
+
+/* hero */
+.hero{padding-top:112px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.avatar{width:140px;height:140px;border-radius:50%;display:grid;place-items:center;font-size:2rem;font-weight:var(--fw);
+  color:#04101f;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:contain;object-position:50% 50%;display:block}
+.hero h1{font-size:clamp(2.4rem,7vw,4rem)}
+.headline{font-size:clamp(1.05rem,2.6vw,1.3rem);color:var(--text);margin-top:6px}
+.loc{margin-top:4px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+
+/* certifications */
+.certs{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.cert{border-top:3px solid var(--accent);display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.cert .ic{color:var(--accent);width:28px;height:28px}
+.cert h3{color:var(--text)}
+.cert p{flex:1}
+
+/* experience, education, skills, contact */
+.stack{display:grid;gap:16px}
+.top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.org{margin:2px 0 10px}
+.job ul{padding-left:18px;display:grid;gap:6px}
+#work h2+.stack+h2{margin-top:40px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 20px}
+.chip{padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:.92rem}
+.contact p+p{margin-top:4px}
+.contact a{color:var(--accent)}
+footer{text-align:center;padding:8px 20px 32px;font-size:.85rem;color:var(--muted)}
+
+/* ========== 5. NAVIGATION ========== */
+.nav{position:fixed;z-index:10;top:0;left:0;right:0;display:flex;justify-content:center;gap:4px;padding:10px;
+  background:var(--card);border-bottom:1px solid var(--line);-webkit-backdrop-filter:blur(var(--blur)) saturate(160%);backdrop-filter:blur(var(--blur)) saturate(160%)}
+.nav a{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:calc(var(--r)*.7);color:var(--muted);text-decoration:none;font-size:.92rem}
+.nav a:hover{background:rgba(148,163,184,.15);color:var(--text)}
+.nav a.on{color:var(--text);background:var(--accent-soft)}
+.nav .ic{width:20px;height:20px}
+
+/* ========== 6. PLATFORM-SPECIFIC INTERACTION ========== */
+[data-os=windows] .card::before{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;pointer-events:none;
+  transition:opacity .2s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.1),transparent 70%)}
+[data-os=windows] .card:hover::before{opacity:1}
+[data-os=windows] .card:hover{border-color:rgba(148,163,184,.5)}
+[data-os=apple] .card:hover{transform:translateY(-4px) scale(1.012)}
+[data-os=apple] .btn,[data-os=apple] .chip{border-radius:999px}
+[data-os=material] .card:active{transform:scale(.98)}
+
+/* ========== 7. MOBILE ========== */
+@media (max-width:760px){
+  html{scroll-padding-top:16px}
+  main{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+  .hero{padding-top:calc(36px + env(safe-area-inset-top));flex-direction:column;align-items:flex-start}
+  .hero>div:last-child{width:100%}
+  .actions,.actions .btn{width:100%}
+  .btn{min-height:52px}
+  .nav{top:auto;bottom:0;justify-content:space-around;gap:0;padding:6px 6px calc(6px + env(safe-area-inset-bottom));
+    border-bottom:0;border-top:1px solid var(--line)}
+  .nav a{flex:1;flex-direction:column;gap:2px;min-height:52px;justify-content:center;padding:6px 2px;font-size:.68rem}
+  .certs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -20px;padding:4px 20px 16px;scrollbar-width:none}
+  .certs::-webkit-scrollbar{display:none}
+  .cert{flex:0 0 82%;scroll-snap-align:center}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/></symbol>
+  <symbol id="i-cert" viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-work" viewBox="0 0 24 24"><path d="M3 7h18v13H3zM9 7V4h6v3"/></symbol>
+  <symbol id="i-skills" viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 6l9 7 9-7"/></symbol>
+</svg>
+
+<nav class="nav" aria-label="Sections">
+  <a href="#home" class="on"><svg class="ic"><use href="#i-home"/></svg>Home</a>
+  <a href="#certs"><svg class="ic"><use href="#i-cert"/></svg>Certificates</a>
+  <a href="#work"><svg class="ic"><use href="#i-work"/></svg>Experience</a>
+  <a href="#skills"><svg class="ic"><use href="#i-skills"/></svg>Skills</a>
+  <a href="#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact</a>
+</nav>
+
+<main>
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="avatar"><img src="result_image.jpeg" alt="Yassa Ali" onerror="this.replaceWith('YA')"></div>
+    <div>
+      <h1>Yassa Ali</h1>
+      <p class="headline">Cybersecurity Engineer Intern &amp; Aspiring IT Support Specialist</p>
+      <p class="loc">Toba Tek Singh, Punjab, Pakistan</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:yassaali.it@gmail.com">Email me</a>
+        <a class="btn" href="#certs">See certifications</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certs">
+    <h2>Certifications</h2>
+    <div class="certs">
+      <article class="card cert"><svg class="ic"><use href="#i-cert"/></svg><h3>Introduction to Cybersecurity</h3><p>Cisco Networking Academy</p></article>
+      <article class="card cert"><svg class="ic"><use href="#i-cert"/></svg><h3>Digital Safety and Security Awareness</h3><p>Cisco Networking Academy</p></article>
+      <article class="card cert"><svg class="ic"><use href="#i-cert"/></svg><h3>Introduction to Computers</h3><p>Microsoft / Coursera</p></article>
+      <article class="card cert"><svg class="ic"><use href="#i-cert"/></svg><h3>InnoQuest Cyber Security Specialization Course</h3><p>Innovista Learn Easy</p></article>
+      <article class="card cert"><svg class="ic"><use href="#i-cert"/></svg><h3>Microsoft IT Support Professional Certificate</h3><p>Microsoft</p><span class="tag wip">In progress</span></article>
+    </div>
+  </section>
+
+  <!-- Experience (internship first) and education -->
+  <section id="work">
+    <h2>Experience</h2>
+    <div class="stack">
+      <article class="card job">
+        <div class="top"><h3>Cybersecurity Engineer (Intern)</h3><span class="tag">Internship</span></div>
+        <p class="org">Harw Solutions (Pvt) Limited, Lahore</p>
+        <ul>
+          <li>Three-month internship focused on fundamental cybersecurity concepts and security practices.</li>
+          <li>Applying analytical thinking and independent problem-solving, and exploring new security technologies on my own initiative.</li>
+        </ul>
+      </article>
+      <article class="card job">
+        <div class="top"><h3>Digital Operations, Asset Management &amp; Software Troubleshooting</h3><span class="tag">5+ years</span></div>
+        <p class="org">Self-employed</p>
+        <ul>
+          <li>Taught myself complex production software and kept pace with constant platform and tool updates.</li>
+          <li>Troubleshot platform bugs and software issues independently, isolating the cause before applying a fix.</li>
+          <li>Analyzed channel and audience analytics to guide decisions, growing an Instagram page to 113K followers in a single year and running a monetized YouTube channel.</li>
+          <li>Optimized repeatable workflows and managed digital assets end to end, including selling the 113K-follower page as a digital asset.</li>
+        </ul>
+      </article>
+    </div>
+    <h2>Education</h2>
+    <div class="stack">
+      <article class="card">
+        <div class="top"><h3>Bachelor of Science in Information Technology (BSIT)</h3><span class="tag">7th semester</span></div>
+        <p class="org">University of Agriculture Faisalabad (UAF)</p>
+        <p>CGPA: 3.23/4.0</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <h3>Technical IT</h3>
+    <div class="chips">
+      <span class="chip">Computer Networking</span><span class="chip">System Administration</span><span class="chip">Operating Systems</span>
+      <span class="chip">Hardware &amp; Software Troubleshooting</span><span class="chip">Cybersecurity Fundamentals</span>
+    </div>
+    <h3>Soft skills</h3>
+    <div class="chips">
+      <span class="chip">Analytical problem-solving</span><span class="chip">Independent research</span><span class="chip">Clear communication</span>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card contact">
+      <p>Open to IT Support and cybersecurity opportunities.</p>
+      <p><a href="mailto:yassaali.it@gmail.com">yassaali.it@gmail.com</a></p>
+      <p>Toba Tek Singh, Punjab, Pakistan</p>
+      <div class="actions"><a class="btn primary" href="mailto:yassaali.it@gmail.com">Send an email</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>&copy; <span id="yr">2026</span> Yassa Ali</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  /* 1. Pick a skin from the OS. Preview any skin with ?os=windows, ?os=apple or ?os=material */
+  var ua = navigator.userAgent;
+  var pf = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+  var forced = new URLSearchParams(location.search).get('os');
+  var os;
+  if (['windows', 'apple', 'material'].indexOf(forced) > -1) os = forced;
+  else if (/iPhone|iPad|iPod|Mac/i.test(ua + pf)) os = 'apple';
+  else if (/Win/i.test(pf) || /Windows/.test(ua)) os = 'windows';
+  else os = 'material';
+  root.dataset.os = os;
+
+  /* 2. Highlight the nav item for the section in view */
+  var links = [].slice.call(document.querySelectorAll('.nav a'));
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) links.forEach(function (a) {
+        a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id);
+      });
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('main section').forEach(function (s) { io.observe(s); });
+
+  window.addEventListener('scroll', function () {
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) links.forEach(function (a) {
+      a.classList.toggle('on', a.getAttribute('href') === '#contact');
+    });
+  }, { passive: true });
+
+  /* 3. Windows Fluent reveal highlight: track the pointer inside each card */
+  if (os === 'windows') document.addEventListener('pointermove', function (e) {
+    var c = e.target.closest && e.target.closest('.card');
+    if (!c) return;
+    var r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+
+  /* 4. Footer year */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
